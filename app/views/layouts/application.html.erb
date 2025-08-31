@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>EmbarkmentLtd</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= favicon_link_tag "favicon.ico" %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-  </head>
+</head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
-  </body>
+<body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% if controller_name != "registrations" && controller_name != "sessions" && controller_name != "passwords" %>
+    <%= render "partials/header" %>
+    <% end %>
+    <%= yield %>
+</body>
+
 </html>

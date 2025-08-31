@@ -25,6 +25,8 @@ gem "jbuilder"
 
 gem 'tailwindcss-rails', '~> 3.3.0'
 
+gem 'devise', '~> 4.9', '>= 4.9.4'
+
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 
