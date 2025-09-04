@@ -13,3 +13,54 @@
  *= require_tree .
  *= require_self
  */
+
+/* ...existing code... */
+
+.swiper {
+  width: 100%; /* Make swiper fill the card width */
+  aspect-ratio: 1 / 1; /* Square aspect ratio for images */
+  min-height: 220px; /* Prevent shrinking, adjust as needed */
+  position: relative; /* Needed for absolute positioning of arrows */
+}
+
+.swiper:hover{
+    .swiper-button-next{
+    display: block !important;
+    }
+
+    .swiper-button-prev{
+    display: block !important;
+    }
+}
+
+.swiper-button-next{
+    display: none !important;
+    width: 28px !important;
+    height: 28px !important;
+    background-color: white;
+    background-image: url('next.svg') !important;
+    background-size: cover;
+    border-radius: 50%;
+    border-width: 4px;
+    border-color: white;
+}
+
+.swiper-button-prev{
+    display: none !important;
+    width: 28px !important;
+    height: 28px !important;
+    background-color: white;
+    background-image: url('prev.svg') !important;
+    border-radius: 50%;
+    border-width: 4px;
+    border-color: white;
+}
+
+
+.swiper-button-next::after {
+    content: '' !important;
+}
+
+.swiper-button-prev::after {
+    content: '' !important;
+}

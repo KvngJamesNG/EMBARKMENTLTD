@@ -6,4 +6,25 @@ class Product < ApplicationRecord
   validates :city, presence: true
   validates :state, presence: true
   validates :country, presence: true
+
+  monetize :price_cents, allow_nil: true
+  
+  has_many_attached :images
+
+  has_many :reviews, dependent: :destroy
+
+  # def update_average_rating
+  #   average_rating = reviews.average(:final_rating)
+  #   update_column(:average_final_rating, average_rating)
+  # end
+
+  # Update the average_rating column (use the existing column)
+  def update_average_rating
+    average_rating = reviews.average(:final_rating)
+    update_column(:average_rating, average_rating)
+  end
+
+  def average_final_rating
+    reviews.average(:final_rating)
+  end
 end

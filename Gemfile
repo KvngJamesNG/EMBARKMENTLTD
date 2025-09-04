@@ -27,6 +27,12 @@ gem 'tailwindcss-rails', '~> 3.3.0'
 
 gem 'devise', '~> 4.9', '>= 4.9.4'
 
+gem "faker"
+
+gem 'money-rails'
+
+gem "image_processing", ">= 1.2"
+
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 

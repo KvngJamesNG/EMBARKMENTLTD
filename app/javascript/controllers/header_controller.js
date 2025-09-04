@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ['dropdown', 'openUserMenu']
 
   connect() {
-    console.log("Header controller connected!")
+    // console.log("Header controller connected!")
     console.log("Open user menu target:", this.openUserMenuTarget)
     console.log("Dropdown target:", this.dropdownTarget)
     
