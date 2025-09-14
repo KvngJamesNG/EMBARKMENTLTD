@@ -31,4 +31,10 @@ class Product < ApplicationRecord
   def average_final_rating
     reviews.average(:final_rating)
   end
+
+  def wishlisted_by?(user = nil)
+    return if user.nil?
+
+    wishlisted_users.include?(user)
+  end
 end
