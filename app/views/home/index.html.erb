@@ -56,9 +56,9 @@
                         </p>
                     </div>
                     <p class="mt-0.5 text-sm text-gray-500">
-                        <%= product.city %>,
+                        <%= product.city %>,<%= product.country %></p>
                     </p>
-                    <p class="mt-0.5 text-sm text-gray-500"><%= product.country %></p>
+                    <p class="mt-0.5 text-sm text-gray-500">
                     <p class="mt-0.5 text-sm font-light text-black">
                         <span class="font-medium">
                             <%= humanized_money_with_symbol(product.price) %>
@@ -67,7 +67,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mb-1 inline-block size-4">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                         </svg>
-                        Shipment (Duration)
+                        Shipment (<%= product.available_dates.first %> - <%= product.available_dates.last %>)
                     </p>
                 </div>
             </div>

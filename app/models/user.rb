@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :wishlists, dependent: :destroy
 
   has_many :wishlisted_products, through: :wishlists, source: :product, dependent: :destroy
+
+  has_many :preorders, dependent: :destroy
+  has_many :preordered_products, through: :preorders, source: :product, dependent: :destroy
 end

@@ -16,6 +16,9 @@ class Product < ApplicationRecord
   has_many :wishlists, dependent: :destroy
 
   has_many :wishlisted_users, through: :wishlists, source: :user, dependent: :destroy
+  
+  has_many :preorders, dependent: :destroy
+  has_many :preordered_users, through: :preorders, source: :user, dependent: :destroy
 
   # def update_average_rating
   #   average_rating = reviews.average(:final_rating)
@@ -36,5 +39,20 @@ class Product < ApplicationRecord
     return if user.nil?
 
     wishlisted_users.include?(user)
+  end
+
+  def available_dates
+    next_preorder = preorders.upcoming_preorders.first
+    current_preorder = preorders.current_preorders.first
+
+    if current_preorder.nil? && next_preorder.nil?
+      Date.tomorrow.strftime('%e %b')..(Date.tomorrow + 30.days).strftime('%e %b')
+    elsif current_preorder.nil?
+      Date.tomorrow.strftime('%e %b')..next_preorder.checkin_date.strftime('%e %b')
+    elsif next_preorder.nil?
+      current_preorder.checkout_date.strftime('%e %b')..(Date.tomorrow + 30.days).strftime('%e %b')
+    else
+      current_preorder.checkout_date.strftime('%e %b')..next_preorder.checkin_date.strftime('%e %b')
+    end
   end
 end
