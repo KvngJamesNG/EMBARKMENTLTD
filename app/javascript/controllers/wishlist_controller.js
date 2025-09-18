@@ -1,7 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  updateWishlistStatus() {
+
+  static targets = ["icon", "text"]
+
+  updateWishlistStatus(e) {
+    e.preventDefault();
+    
+    // If user not logged in → trigger login modal
     const isUserLoggedIn = this.element.dataset.userLoggedIn;
     if (isUserLoggedIn == "false") {
       document.querySelector(".js-login").click();
@@ -44,8 +50,11 @@ export default class extends Controller {
         this.element.dataset.wishlistId = data.id;
 
         // Update UI
-        this.element.classList.add("fill-red-600");
-        this.element.classList.remove("fill-[rgba(0,0,0,0.5)]");
+        this.iconTarget.classList.remove("fill-[rgba(0,0,0,0.5)]");
+        this.iconTarget.classList.add("fill-red-600");
+        if (this.textTarget) {
+          this.textTarget.innerText = "Saved";
+        }
       })
       .catch(error => console.error(error));
   }
@@ -61,8 +70,12 @@ export default class extends Controller {
     // Reset dataset + UI
     this.element.dataset.status = "false";
     this.element.dataset.wishlistId = ""; // ✅ explicitly reset
-    this.element.classList.remove("fill-red-600");
-    this.element.classList.add("fill-[rgba(0,0,0,0.5)]");
+    this.iconTarget.classList.remove("fill-red-600");
+    this.iconTarget.classList.add("fill-[rgba(0,0,0,0.5)]");
+
+    if (this.textTarget) {
+      this.textTarget.innerText = "Save";
+    }
   })
   .catch(error => console.error(error));
 }
