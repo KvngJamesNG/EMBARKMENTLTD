@@ -2,14 +2,18 @@
     <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <div class="mt-20 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             <% @products.each do |product| %>
-            <div class="group relative">
+
+            <div class="group relative cursor-pointer">
                 <div class="relative overflow-hidden rounded-md bg-gray-200">
                     <!-- Swiper container for product images -->
-                    <div class=" swiper swiper-<%= product.id %> aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200">
+                    <div class="swiper swiper-<%= product.id %> aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200">
                         <div class="swiper-wrapper">
                             <% product.images.each do |image| %>
                             <div class="swiper-slide flex items-center justify-center">
+                                <%= link_to product_path(product) do %>
                                 <%= image_tag image, alt: "product images", class: "h-full w-full object-cover object-center" %>
+                                <% end %>
+
                             </div>
                             <% end %>
                         </div>
@@ -59,6 +63,8 @@
                         <%= product.city %>,<%= product.country %></p>
                     </p>
                     <p class="mt-0.5 text-sm text-gray-500">
+                        <!-- add something here in future -->
+                    </p>
                     <p class="mt-0.5 text-sm font-light text-black">
                         <span class="font-medium">
                             <%= humanized_money_with_symbol(product.price) %>
@@ -71,6 +77,7 @@
                     </p>
                 </div>
             </div>
+
             <% end %>
         </div>
     </div>

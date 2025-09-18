@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     resources :wishlists, only: [:create, :destroy]
   end
 
+  resources :products, only: [:show]
+
 end
