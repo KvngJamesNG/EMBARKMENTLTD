@@ -27,17 +27,35 @@
                     </span>
                 </span>
             </div>
-
-
-
         </div>
+
+
+
         <!-- Image gallery -->
-        <div class=" mx-auto mt-3 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-8 lg:px-8">
-            <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-02-secondary-product-shot.jpg" alt="Two each of gray, white, and black shirts laying flat." class="row-span-2 aspect-3/4 size-full rounded-lg object-cover max-lg:hidden" />
-            <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg" alt="Model wearing plain black basic tee." class="col-start-2 aspect-3/2 size-full rounded-lg object-cover max-lg:hidden" />
-            <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg" alt="Model wearing plain gray basic tee." class="col-start-2 row-start-2 aspect-3/2 size-full rounded-lg object-cover max-lg:hidden" />
-            <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-02-featured-product-shot.jpg" alt="Model wearing plain white basic tee." class="row-span-2 aspect-4/5 size-full object-cover sm:rounded-lg lg:aspect-3/4" />
+        <div class="mx-auto mt-3 max-w-7xl px-4 lg:grid lg:grid-cols-2 lg:gap-2">
+            <!-- LEFT: big image (takes 50% width) -->
+            <div class="row-span-2 rounded-l-lg overflow-hidden">
+                <%= image_tag @product.images[0], alt: "Image 1", class: "w-full h-full object-cover" %>
+            </div>
+
+            <!-- RIGHT: 4 stacked images (2x2 grid) -->
+            <div class="grid grid-cols-2 gap-2">
+                <div class="overflow-hidden rounded-tr-lg" style="aspect-ratio:3/2;">
+                    <%= image_tag @product.images[1], alt: "Image 2", class: "w-full h-full object-cover" %>
+                </div>
+                <div class="overflow-hidden" style="aspect-ratio:3/2;">
+                    <%= image_tag @product.images[2], alt: "Image 3", class: "w-full h-full object-cover" %>
+                </div>
+                <div class="overflow-hidden" style="aspect-ratio:3/2;">
+                    <%= image_tag @product.images[3], alt: "Image 4", class: "w-full h-full object-cover" %>
+                </div>
+                <div class="overflow-hidden rounded-br-lg" style="aspect-ratio:3/2;">
+                    <%= image_tag @product.images[4], alt: "Image 5", class: "w-full h-full object-cover" %>
+                </div>
+            </div>
         </div>
+
+
 
         <!-- Product info -->
         <div class="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto_auto_1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
@@ -48,7 +66,9 @@
             <!-- Options -->
             <div class="mt-4 lg:row-span-3 lg:mt-0">
                 <h2 class="sr-only">Product information</h2>
-                <p class="text-3xl tracking-tight text-gray-900">$192</p>
+                <p class="text-3xl tracking-tight text-gray-900">
+                    <%= number_to_currency(@product.price, unit: "£" ) %>
+                </p>
 
                 <!-- Reviews -->
                 <div class="mt-6">

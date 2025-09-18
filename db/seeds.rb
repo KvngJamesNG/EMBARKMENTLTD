@@ -20,7 +20,15 @@ user = User.create!({
 )
 
 product.images.attach(io: File.open("db/images/product_#{i + 1}.png"), filename: product.name)
-product.images.attach(io: File.open("db/images/product_#{i + 7}.png"), filename: product.name)
+product.images.attach(io: File.open("db/images/product_7.png"), filename: product.name)
+product.images.attach(io: File.open("db/images/product_8.png"), filename: product.name)
+product.images.attach(io: File.open("db/images/product_9.png"), filename: product.name)
+product.images.attach(io: File.open("db/images/product_10.png"), filename: product.name)
+product.images.attach(io: File.open("db/images/product_11.png"), filename: product.name)
+product.images.attach(io: File.open("db/images/product_12.png"), filename: product.name)
+product.images.attach(io: File.open("db/images/product_13.png"), filename: product.name)
+product.images.attach(io: File.open("db/images/product_14.png"), filename: product.name)
+
 
 ((5..10).to_a.sample).times do
   Review.create!({
