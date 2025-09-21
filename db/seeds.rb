@@ -16,6 +16,11 @@ user = User.create!({
       state: Faker::Address.state,
       country: Faker::Address.country,
       price: Money.from_amount(Faker::Number.decimal(l_digits: 2), "GBP"),
+      quantity: (1..100).to_a.sample,
+      unit: ["kg", "g", "lbs", "oz", "liters", "ml"].sample,
+      packaging: ["Box", "Bag", "Crate", "None"].sample,
+      quality: ["Grade A", "Grade B", "Grade C"].sample,
+      harvest_info: ["Freshly harvested", "Stored for a week", "Frozen", "Non-GMO"].sample
     }
 )
 

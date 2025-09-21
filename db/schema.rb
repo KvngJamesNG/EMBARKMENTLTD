@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_09_14_123707) do
+ActiveRecord::Schema[7.1].define(version: 2025_09_21_155709) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,6 +69,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_14_123707) do
     t.string "price_currency"
     t.integer "reviews_count"
     t.decimal "average_rating"
+    t.integer "quantity", default: 0
+    t.string "unit", default: "0"
+    t.string "packaging", default: "0"
+    t.string "quality", default: "0"
+    t.string "harvest_info", default: "0"
   end
 
   create_table "reviews", force: :cascade do |t|
