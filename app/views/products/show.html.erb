@@ -220,43 +220,24 @@
         <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
 
             <!-- Description and details -->
-            <div>
+            <div class="border-t border-gray-200 pt-10 mt-2">
                 <h3 class="sr-only">Description</h3>
 
-                <div class="space-y-6">
-                    <p class="text-base text-gray-900"><%= @product.description %></p>
+                <div class="space-y-6 mb-6">
+                    <p class="text-base text-gray-900"><%= @product.description.truncate(500) %></p>
+                    <% if @product.description.length > 100 %>
+                    <div class="flex items-center cursor-pointer">
+                        <span class="font-medium underline">Show More</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </div>
+                    <% end %>
                 </div>
+                <!-- Reviews -->
+                <section aria-labelledby=" reviews-heading" class="border-t border-gray-200 pt-10 lg:pt-16">
+                    <h2 id="reviews-heading" class="sr-only">Reviews</h2>
+                </section>
             </div>
-
-            <div class="mt-10">
-                <h3 class="text-sm font-medium text-gray-900">Highlights</h3>
-
-                <div class="mt-4">
-                    <ul role="list" class="list-disc space-y-2 pl-4 text-sm">
-                        <li class="text-gray-400"><span class="text-gray-600">Hand cut and sewn locally</span></li>
-                        <li class="text-gray-400"><span class="text-gray-600">Dyed with our proprietary colors</span></li>
-                        <li class="text-gray-400"><span class="text-gray-600">Pre-washed &amp; pre-shrunk</span></li>
-                        <li class="text-gray-400"><span class="text-gray-600">Ultra-soft 100% cotton</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <section aria-labelledby="shipping-heading" class="mt-10">
-                <h2 id="shipping-heading" class="text-sm font-medium text-gray-900">Details</h2>
-
-                <div class="mt-4 space-y-6">
-                    <p class="text-sm text-gray-600">
-                        <%= @product.description %>
-                    </p>
-                </div>
-            </section>
         </div>
-
-        <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-            <!-- Reviews -->
-            <section aria-labelledby="reviews-heading" class=" pt-10 lg:pt-16">
-                <h2 id="reviews-heading" class="sr-only">Reviews</h2>
-            </section>
-        </div>
-    </div>
 </main>
